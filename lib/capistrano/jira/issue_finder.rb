@@ -6,7 +6,8 @@ module Capistrano
 
       execute do
         begin
-          Jira.client.Issue.jql(jql, fields: ['status'], max_results: 1_000_000)
+          issue_keys = `git log -n1`
+          Jira.client.Issue.jql(jql, fields: ["status"], max_results: 1_000_000)
         rescue JIRA::HTTPError => e
           raise FinderError, error_message(e)
         end
@@ -16,10 +17,10 @@ module Capistrano
 
       def self.jql
         [
-          "project = #{fetch(:jira_project_key)}",
-          "status = #{fetch(:jira_status_name)}",
+          "project = '#{fetch(:jira_project_key)}'",
+          "status  = '#{fetch(:jira_status_name)}'",
           fetch(:jira_filter_jql)
-        ].compact.join(' AND ')
+        ].compact.join(" AND ")
       end
     end
   end

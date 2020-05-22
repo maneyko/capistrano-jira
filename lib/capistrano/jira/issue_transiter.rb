@@ -16,7 +16,7 @@ module Capistrano
 
       def transition
         @transition ||= issue.transitions.all.find do |t|
-          t.attrs['name'].casecmp(fetch(:jira_transition_name)).zero?
+          t.attrs["name"].casecmp(fetch(:jira_transition_name)).zero?
         end
       end
 
@@ -39,13 +39,15 @@ module Capistrano
       end
 
       def comment_hash
-        { update:
-          { comment: [
-            { add:
-               {
-                 body: 'Issue transited automatically during deployment.'
-               } }
-          ] } }
+        {
+          update: {
+            comment: [
+              add: {
+                body: "Issue transited automatically during deployment."
+              }
+            ]
+          }
+        }
       end
     end
   end

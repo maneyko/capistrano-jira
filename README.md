@@ -1,4 +1,3 @@
-[![Code Climate](https://codeclimate.com/github/wojw5/capistrano-jira/badges/gpa.svg)](https://codeclimate.com/github/wojw5/capistrano-jira)
 # Capistrano::Jira
 
 Transit JIRA issues automatically after deployment.
@@ -8,7 +7,7 @@ Transit JIRA issues automatically after deployment.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'capistrano-jira'
+gem "capistrano-jira"
 ```
 
 And then execute:
@@ -23,25 +22,25 @@ Or install it yourself as:
 
 - Require library in `Capfile`
 ```ruby
-require 'capistrano/jira'
+require "capistrano/jira"
 ```
 
 - Set general parameters in `config/deploy.rb`
 ```ruby
-set :jira_username,                 'john.doe@exalmple.com' # default: ENV['CAPISTRANO_JIRA_USERNAME']
-set :jira_password,                 'p@55w0rD' # default: ENV['CAPISTRANO_JIRA_PASSWORD']
-set :jira_site,                     'https://example.atlassian.net' # default: ENV['CAPISTRANO_JIRA_SITE']
+set :jira_username,                 "john.doe@exalmple.com" # default: ENV['CAPISTRANO_JIRA_USERNAME']
+set :jira_password,                 "p@55w0rD" # default: ENV['CAPISTRANO_JIRA_PASSWORD']
+set :jira_site,                     "https://example.atlassian.net" # default: ENV['CAPISTRANO_JIRA_SITE']
 set :jira_comment_on_transition,    false # default: true
-set :jira_project_key,              'PROJ' # required
+set :jira_project_key,              "PROJ" # required
 set :jira_validate_commit_messages, true # default: false; transit issues only if key found in commit messages
 set :jira_commit_messages_limit,    123 # default: 1000; last commits messages lookup limit
 ```
 
 - Set parameters for specific environment (for example `config/deploy/staging.rb`)
 ```ruby
-set :jira_status_name,     'QA passed' # required; name of status from which issues should be transited
-set :jira_transition_name, 'Deploy to staging' # required; name of transition that should be executed
-set :jira_filter_jql,      'component = Backend' # optional; additional JQL filter to scope issues
+set :jira_status_name,     "QA passed" # required; name of status from which issues should be transited
+set :jira_transition_name, "Deploy to staging" # required; name of transition that should be executed
+set :jira_filter_jql,      "component = Backend" # optional; additional JQL filter to scope issues
 ```
 
 Then while running deployment you should see transitioned issues.
@@ -58,7 +57,7 @@ cap staging jira:check
 Proper output will be similar to this:
 ```
 => Required params
-jira_username = wojtek@codegarden.online
+jira_username = pmaneyko@gmail.com
 jira_password = **********
 jira_site = https://example.atlassian.net
 jira_project_key = PROJ
@@ -78,4 +77,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/capistrano-jira.
+Bug reports and pull requests are welcome on GitHub at https://github.com/maneyko/capistrano-jira.
